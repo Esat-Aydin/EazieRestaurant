@@ -1,6 +1,8 @@
 using Eazie.Services.ProductAPI.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
+using Eazie.Services.ProductAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,10 @@ builder.Services.AddDbContext<ApplicationDbContexts>(options =>
 {
     options.UseSqlServer(connectionString);
 });
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
