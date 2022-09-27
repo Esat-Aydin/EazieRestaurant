@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Eazie.Services.ProductAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eazie.Services.ProductAPI.DbContexts
 {
@@ -8,5 +9,6 @@ namespace Eazie.Services.ProductAPI.DbContexts
         {
             
         }
+        public DbSet<Product> Products { get; set; }
     }
 }
